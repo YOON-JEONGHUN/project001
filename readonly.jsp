@@ -6,7 +6,7 @@
 	pageEncoding="UTF-8"%>
 <%
 /* 세션값을 가져오기 */
-String uid = (String) session.getAttribute("MemberId");
+String uid = (String) session.getAttribute("memberId");
 
 /*이전 jsp에서 넘겨받은 parameter를 저장 */
 String x = request.getParameter("num");
@@ -49,6 +49,10 @@ $(function() {
 		
 	}
 })
+function b1_click() {
+		location.href="readonly2.jsp?readnum=<%=readnum%>";	
+		}
+	
 
 /* 
 $(function() {
@@ -96,13 +100,16 @@ $(function() {
 <body style="width: 450px; height: 800px; font-size: 25px;">
 	<form action="modifyRemove.jsp">
 		<!-- DTO에 담긴 값들을 각 항목에 맞게 넣음 -->
-		게시물 번호 : <input id="in1" type="text" name="Bbsnum" value=<%=readnum%>
-			readonly> <br> 제목 : <input type="text" name="title"
-			value=<%=bag2.getTitle()%>> <br> 날짜 : <input type="date"
-			name="day" value=<%=bag2.getDay()%> readonly> <br> 작성자 :
-		<input id="userid" type="text" value=<%=bag2.getUser_id()%> readonly>
+		게시물 번호 : <input id="in1" type="text" 
+		name="Bbsnum" value=<%=readnum%> readonly> 
+		<br> 
+		제목 : <input type="text" name="title"
+			value=<%=bag2.getTitle()%>> <br> 
+		날짜 : <input type="date"	name="day" 
+		value=<%=bag2.getDay()%> readonly> <br>
+		 작성자 :	<input id="userid" type="text"
+		  value=<%=bag2.getUser_id()%> readonly>
 		<br> 내용 : <br>
-
 		<textarea name="contents" rows="20" cols="60"><%=bag2.getContents()%></textarea>
 
 		<br> 공감 수 : 
@@ -117,10 +124,8 @@ $(function() {
 	</div>
 	<br>
 	<!-- 이전 jsp에서 받은 값을 넘겨서 공감하기 비활성화된 페이지로 넘기기 -->
-	<form action="readonly2.jsp">
-		<button id="b1" name="num">공감하기</button>
-	</form>
-
+	<input id="b1" type="button" value="공감하기" onclick="b1_click()">
+	
 	<!-- 이전 페이지(메인 페이지)로 가는 버튼 -->
 	<form action="Bbs.jsp">
 		<button>뒤로 가기</button>

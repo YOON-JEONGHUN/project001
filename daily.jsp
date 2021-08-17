@@ -43,17 +43,19 @@ BbsDTO rankbag3 = dao.questionrank(bag3);
 <section id="center">
 
 					<ul id="center_lists">
+					<li class="center_list_3">번호</li>
+							<li class="center_list_4">제목</li>
 						<%
 						for (int i = 0; i < 4; i++) {
 							BbsDTO dto = dailylist.get(i);
 						%>
 						<li class="center_list_1"><a class="center_list_1_text"
-							href="readonlyD.jsp?num=<%=dto.getNum()%>"> <%=dto.getTitle()%>
+							href="readonlyD.jsp?num=<%=dto.getNum()%>"> <%=(i + 1) %>
 						</a></li>
 						<li class="center_list_2"><a class="center_list_2_text"
-							href="readonlyD.jsp?num=<%=dto.getNum()%>"><%=dto.getContents()%></a></li>
-						<li class="center_list_3"><a class="center_list_3_text">공감<%=dto.getLike()%></a></li>
-						<li class="center_list_4"><a class="center_list_4_text">조회수<%=dto.getFav()%></a></li>
+							href="readonlyD.jsp?num=<%=dto.getNum()%>"><%=dto.getTitle()%></a></li>
+						<li class="center_list_3">공감<%=dto.getLike()%></li>
+						<li class="center_list_4">조회수<%=dto.getFav()%></li>
 						<%
 						}
 						%>
@@ -68,7 +70,7 @@ BbsDTO rankbag3 = dao.questionrank(bag3);
 					<button>글 작성하기</button>
 				</form>
 				<hr>
-				<form action="main.jsp">
+				<form action="marketMain.jsp">
 					<button>메인 화면으로 가기</button>
 				</form>
 				<hr>

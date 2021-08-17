@@ -6,7 +6,7 @@
 	pageEncoding="UTF-8"%>
 <%
 /*이전 jsp에서 넘겨받은 parameter를 저장 */
-String x = request.getParameter("num");
+String x = request.getParameter("readnum");
 /* String type을 int로 변환 */
 int readnum = Integer.parseInt(x);
 /* DTO bag에 이전jsp에서 받은 값을 담음 */
@@ -25,7 +25,7 @@ bag3.setNum(readnum);
 bag3.setFav(bag2.getFav());
 /* update 구문을 불러오기 위한 메서드 */
 BbsDAO2 dao2 = new BbsDAO2();
-/* update 메서드 호출을 통해서 update 진행  update구문에 조회수 항목 1증가를 시킴*/
+/* update 메서드 호출을 통해서 update 진행  update구문에 공감 Like 항목 1증가를 시킴*/
 dao2.updateALike(bag3);
 %>
 
@@ -37,11 +37,19 @@ dao2.updateALike(bag3);
 </head>
 <h1>동네생활 글읽기</h1>
 <body>
-	제목 :<input type="text" name="title" readonly>	<br> 
-	날짜 :<input type="date" name="day" readonly>	<br> 
-	내용 :<br>
-	<textarea name="contents" rows="20" cols="60" readonly></textarea>
-	<br>
+	<!-- DTO에 담긴 값들을 각 항목에 맞게 넣음 -->
+		게시물 번호 : <input id="in1" type="text" 
+		name="Bbsnum" value=<%=readnum%> readonly> 
+		<br> 
+		제목 : <input type="text" name="title"
+			value=<%=bag2.getTitle()%>> <br> 
+		날짜 : <input type="date"	name="day" 
+		value=<%=bag2.getDay()%> readonly> <br>
+		 작성자 :	<input id="userid" type="text"
+		  value=<%=bag2.getUser_id()%> readonly>
+		<br> 내용 : <br>
+		<textarea name="contents" rows="20" cols="60"><%=bag2.getContents()%></textarea><br>
+		
 
 	<input type="button" value="공감하기" disabled="disabled">
 	<form action="Bbs.jsp">

@@ -20,8 +20,6 @@
 			<option value="Q"> 질문 관련 글
 		</select>
 	<br>
-
-
 		날짜 : 
 		<input type="date" name="day"><br>
 		제목 : 

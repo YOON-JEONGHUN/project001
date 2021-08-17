@@ -4,13 +4,16 @@
 	pageEncoding="UTF-8"%>
 
 <%
-String user_id = (String)session.getAttribute("MemberId");
-
+// 세션값으로 아이디를 가져옴
+String user_id = (String)session.getAttribute("memberId");
+System.out.print(user_id);
+// 해당 input의 값을 받아서 저장. 목록선택에 따라서 해당 DB에 저장
 String lists = request.getParameter("lists");
 String day = request.getParameter("day");
 String title = request.getParameter("title");
 String contents = request.getParameter("contents");
 
+// 해당 값들을 DTO에 넣음
 BbsDTO bag = new BbsDTO();
 bag.setUser_id(user_id);
 bag.setLists(lists);
@@ -18,6 +21,7 @@ bag.setTitle(title);
 bag.setContents(contents);
 bag.setDay(day);
 
+// DAO create로 DB에 val값을 넣음
 BbsDAO dao = new BbsDAO();
 dao.create(bag);
 %>
@@ -33,6 +37,7 @@ dao.create(bag);
 게시글의 주제를 선택해주세요. <br>
 <form action="inserts.jsp">
 
+<!-- val값을 달리하여 DB table을 선택 -->
 <select name="lists">
 			<option value="A"> 사건사고 관련 글
 			<option value="D" > 일상생활 관련 글

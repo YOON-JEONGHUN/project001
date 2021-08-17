@@ -42,7 +42,7 @@ public class BbsDAO {
 			ps.setString(6, bag.getUser_id());
 			ps.setInt(7, like);
 			ps.setString(8, bag.getLists());
-			ps.setInt(9, bag.getOnoff());
+			ps.setInt(9, onoff);
 
 //			System.out.println("3. sql문 생성 성공!!!");
 
@@ -58,7 +58,7 @@ public class BbsDAO {
 			String username = "root";
 			String password = "1234";
 			Connection con = DriverManager.getConnection(url, username, password);
-//			System.out.println("2. oksusu db연결 성공!!!");
+			System.out.println("2. oksusu db연결 성공!!!");
 
 			String sql = "insert into accident values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -70,13 +70,13 @@ public class BbsDAO {
 			ps.setString(6, bag.getUser_id());
 			ps.setInt(7, like);
 			ps.setString(8, bag.getLists());
-			ps.setInt(9, bag.getOnoff());
+			ps.setInt(9, onoff);
 
-//			System.out.println("3. sql문 생성 성공!!!");
+		System.out.println("3. sql문 생성 성공!!!");
 
-//			int result = ps.executeUpdate();
-//			System.out.println("4. sql문 전송 전송");
-//			System.out.println(result);
+		 int result = ps.executeUpdate();
+			System.out.println("4. sql문 전송 전송");
+			System.out.println(result);
 
 		} else if (bag.getLists().equals("H")) {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -97,7 +97,7 @@ public class BbsDAO {
 			ps.setString(6, bag.getUser_id());
 			ps.setInt(7, like);
 			ps.setString(8, bag.getLists());
-			ps.setInt(9, bag.getOnoff());
+			ps.setInt(9, onoff);
 
 //			int result = ps.executeUpdate();
 //			System.out.println(result);
@@ -121,7 +121,7 @@ public class BbsDAO {
 			ps.setString(6, bag.getUser_id());
 			ps.setInt(7, like);
 			ps.setString(8, bag.getLists());
-			ps.setInt(9, bag.getOnoff());
+			ps.setInt(9, onoff);
 
 //			int result = ps.executeUpdate();
 //			System.out.println(result);

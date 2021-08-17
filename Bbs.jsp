@@ -8,8 +8,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-String uid = request.getParameter("MemberId");
-session.setAttribute("MemberId", uid );
 
 /*전체 데이텉 베이스 불러오기 */
 BbsDAO dao = new BbsDAO();
@@ -21,7 +19,6 @@ BbsDTO bag = new BbsDTO();
 bag.setFav(1);
 BbsDTO rankbag = dao.accidentrank(bag);
 /* 변수 a 에 높은 순위의 값(공감개수) 저장*/
-
 
 BbsDTO bag1 = new BbsDTO();
 bag1.setFav(1);
@@ -57,39 +54,36 @@ BbsDTO rankbag3 = dao.questionrank(bag3);
 					<li class="top_list"><a class="top_list_text"
 						href="accident.jsp?" style="color: red;">사건사고</a></li>
 				</ul>
-				
+
 				<section id="center">
-<!-- 리스트의 주소로 연결 해당 목록의 num을 파라메터로 넘김 -->
+				    <!-- 전체 리스트를 반복문으로 불러온 후 해당 개수만 불러옴 -->
+					<!-- 리스트의 주소로 연결 / 해당 목록의 num을 파라메터로 넘김 -->
 					<ul id="center_lists">
-						<%
-						for (int i = 0; i < 4; i++) {
-							BbsDTO dto = accidentlist.get(i);
-						%>
+					<li class="center_list_3">번호</li>
+							<li class="center_list_4">제목</li>
+						<%for (int i = 0; i < 4; i++) {
+							BbsDTO dto = accidentlist.get(i); %>
 						<li class="center_list_1"><a class="center_list_1_text"
-							href="readonly.jsp?num=<%=dto.getNum()%>"> <%=dto.getTitle()%>
+							href="readonly.jsp?num=<%=dto.getNum()%>"> <%=(i + 1) %>
 						</a></li>
 						<li class="center_list_2"><a class="center_list_2_text"
-							href="readonly.jsp?num=<%=dto.getNum()%>"><%=dto.getContents()%></a></li>
-						<li class="center_list_3"><a class="center_list_3_text">공감<%=dto.getLike()%></a></li>
-						<li class="center_list_4"><a class="center_list_4_text">조회수<%=dto.getFav()%></a></li>
-						<%
-						}
-						%>
-
-					</ul>
+							href="readonly.jsp?num=<%=dto.getNum()%>"><%=dto.getTitle()%></a></li>
+						<li class="center_list_3">공감<%=dto.getLike()%></li>
+						<li class="center_list_4">조회수<%=dto.getFav()%></li>
+						<% } %>	</ul>
 
 				</section>
 				<form action="contents.jsp">
 					<button>글 작성하기</button>
 				</form>
 				<hr>
-				<form action="main.jsp">
+				<form action="marketMain.jsp">
 					<button>메인 화면으로 가기</button>
 				</form>
 				<hr>
-				
+
 				<!-- 조회수가 높은 목록 불러오기, 각 탭별 1위 랭크 -->
-				<h3 style="color: blue; font-size: 40px;">인기 글</h3>
+				<h3 style="color: blue; font-size: 40px;">인기 글 제목</h3>
 				<section id="bottom">
 					<ul id="bottom_lists">
 						<li class="bottom_list"><a class="bottom_list_text"

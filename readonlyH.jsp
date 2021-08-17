@@ -26,7 +26,7 @@ bag3.setFav(bag2.getFav());
 /* update 구문을 불러오기 위한 메서드 */
 BbsDAO2 dao2 = new BbsDAO2();
 /* update 메서드 호출을 통해서 update 진행  update구문에 조회수 항목 1증가를 시킴*/
-dao2.updateA(bag3);
+dao2.updateH(bag3);
 %>
 
 <!DOCTYPE html>

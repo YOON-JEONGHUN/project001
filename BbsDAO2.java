@@ -87,7 +87,7 @@ public class BbsDAO2 {
 	      String user = "root";
 	      String password = "1234";
 	      Connection con = DriverManager.getConnection(url, user, password);
-	      String sql = "update quesetion set q_fav= ? where q_num = ?";
+	      String sql = "update question set q_fav= ? where q_num = ?";
 	      PreparedStatement ps = con.prepareStatement(sql);
 	      ps.setInt(1, bag.getFav() + 1);
 	      ps.setInt(2, bag.getNum());
